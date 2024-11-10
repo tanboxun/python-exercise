@@ -24,6 +24,9 @@ Below is a breakdown of the lessons and projects we’ll be working on:
 	•	Creating functions
 	•	Using built-in modules
 	•	Introduction to Turtle
+	4.	Shoot the Apple
+	•	Introduction GUI
+	•	Introduction mouse clicking event
 
 🛠 Tools and Resources
 
@@ -42,7 +45,8 @@ Check out our progress here:
 
 	•	Lesson 1: Simple Calculator Program
 	•	Lesson 2: Guess the Number Game
-	•	Lesson 3: FSimple Text-Based Adventure Game
+	•	Lesson 3: Simple Text-Based Adventure Game
+	•	Lesson 4: Shoot the Apple
 
 🤝 Contributions
 
