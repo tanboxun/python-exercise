@@ -2,7 +2,14 @@ from pgzero.builtins import Actor
 import pygame, pgzrun
 from random import randint
 
-screen_width = 1280
+file = '04-shoot-the-apple/Cooking-Show-chosic.com_.mp3'
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load(file)
+pygame.mixer.music.play()
+pygame.event.wait()
+
+screen_width = 800
 screen_height = 720
 score = 0
 game_over = False
@@ -19,7 +26,7 @@ apple = Actor('apple')
 def draw():
     screen.clear()
     apple.draw()
-
+    screen.draw.text("Score: " + str(score), color="green", topleft=(10, 10))
     if game_over:
         screen.fill("pink")
         screen.draw.text("Final Score: " + str(score), topleft=(10, 10), fontsize=60)
@@ -28,12 +35,13 @@ def update():
     pass
 
 def place_apple():
-    apple.x = randint(10, 800)
+    apple.x = randint(10, 600)
     apple.y = randint(10, 600)
 
 def time_up():
     global game_over
     game_over = True
+    pygame.mixer.music.stop()
 
 
 def on_mouse_down(pos):
@@ -41,10 +49,11 @@ def on_mouse_down(pos):
         print("Good shot!")
         global score
         score = score + 1
-        place_apple()
     else:
         print("You missed!")
 
-clock.schedule(time_up, 7.0)
+    place_apple()
 
+clock.schedule(time_up, 7.0)
+place_apple()
 pgzrun.go()
