@@ -9,34 +9,44 @@ pygame.mixer.music.load(file)
 pygame.mixer.music.play()
 pygame.event.wait()
 
-screen_width = 800
-screen_height = 720
+WIDTH = 800
+HEIGHT = 720
 score = 0
 game_over = False
-
-pygame.init()
-screen1 = pygame.display.set_mode((screen_width,screen_height))
 
 BLACK = (0,0,0)
 
 
 
-apple = Actor('apple')
+apple = Actor('apple', topleft=(0,0))
+
+def apple_position():
+    print(f'apple.x = {apple.x}')
+    print(f'apple.y = {apple.y}')
 
 def draw():
     screen.clear()
     apple.draw()
     screen.draw.text("Score: " + str(score), color="green", topleft=(10, 10))
     if game_over:
-        screen.fill("pink")
-        screen.draw.text("Final Score: " + str(score), topleft=(10, 10), fontsize=60)
+        screen.fill("black")
+        screen.draw.text("Final Score: " + str(score), centery=300 , centerx=409 , fontsize=60 ,
+                          color="turquoise", gcolor="red") 
+
+#def update(dt):
+    #global time_left, game_over
+    #if not game_over:
+        #time_left -= dt
+        #if time_left <= 0:
+            #time_up()
 
 def update():
     pass
 
 def place_apple():
-    apple.x = randint(10, 600)
-    apple.y = randint(10, 600)
+    apple.x = randint(51, WIDTH - apple.width)
+    apple.y = randint(50, HEIGHT - apple.height)
+    apple_position()
 
 def time_up():
     global game_over
@@ -54,6 +64,6 @@ def on_mouse_down(pos):
 
     place_apple()
 
-clock.schedule(time_up, 7.0)
+clock.schedule(time_up, 30.0)
 place_apple()
 pgzrun.go()
