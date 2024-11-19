@@ -29,6 +29,11 @@ Welcome! This repository is a fun project where I teach my 10-year-old son Pytho
 - Introduction to GUI concepts.
 - Learn about mouse click events.
 
+### 5. Singapore Weather Map
+- Read data from a JSON file.
+- Use Pygame to display a map and draw on it.
+- Fetch data from an API and update your application dynamically.
+
 ## 🧐 Tools and Resources
 
 - **Python 3**: Our main programming language.
