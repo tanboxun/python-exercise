@@ -13,6 +13,8 @@ WIDTH = 800
 HEIGHT = 720
 score = 0
 game_over = False
+time_left = 20
+time_up = 20
 
 BLACK = (0,0,0)
 
@@ -28,20 +30,18 @@ def draw():
     screen.clear()
     apple.draw()
     screen.draw.text("Score: " + str(score), color="green", topleft=(10, 10))
+    screen.draw.text("TimeLeft: " + str(time_left) , color="red", topright=(794, 20))
     if game_over:
         screen.fill("black")
-        screen.draw.text("Final Score: " + str(score), centery=300 , centerx=409 , fontsize=60 ,
+        screen.draw.text("Final Score: " + str(score), centery=430 , centerx=409 , fontsize=60 ,
                           color="turquoise", gcolor="red") 
 
-#def update(dt):
-    #global time_left, game_over
-    #if not game_over:
-        #time_left -= dt
-        #if time_left <= 0:
-            #time_up()
-
-def update():
-    pass
+def update(dt):
+    global time_left, game_over
+    if not game_over:
+        time_left -= dt
+        if time_left <= 0:
+            time_up()
 
 def place_apple():
     apple.x = randint(51, WIDTH - apple.width)
