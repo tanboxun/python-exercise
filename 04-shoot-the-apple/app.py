@@ -13,8 +13,8 @@ WIDTH = 800
 HEIGHT = 720
 score = 0
 game_over = False
-time_left = 20
-time_up = 20
+time_left = 32
+time_up = 32
 
 BLACK = (0,0,0)
 
@@ -30,10 +30,11 @@ def draw():
     screen.clear()
     apple.draw()
     screen.draw.text("Score: " + str(score), color="green", topleft=(10, 10))
-    screen.draw.text("TimeLeft: " + str(time_left) , color="red", topright=(794, 20))
+    screen.draw.text("TimeLeft:" , color="red", topright=(764, 10))
+    screen.draw.text(str(time_left)[0:4] , color="red", topleft=(766, 10))
     if game_over:
         screen.fill("black")
-        screen.draw.text("Final Score: " + str(score), centery=430 , centerx=409 , fontsize=60 ,
+        screen.draw.text("Final Score: " + str(score), centery=400 , centerx=409 , fontsize=60 ,
                           color="turquoise", gcolor="red") 
 
 def update(dt):
@@ -64,6 +65,6 @@ def on_mouse_down(pos):
 
     place_apple()
 
-clock.schedule(time_up, 30.0)
+clock.schedule(time_up, 32.0)
 place_apple()
 pgzrun.go()
