@@ -1,3 +1,4 @@
+
 # Singapore Weather Map
 
 This is a fun exercise to create a weather map for Singapore using Pygame and real-time weather data from [data.gov.sg](https://data.gov.sg/). Follow the steps below to complete the project.
@@ -10,6 +11,7 @@ This is a fun exercise to create a weather map for Singapore using Pygame and re
 2. How to use Pygame to display a map and draw on it.
 3. How to fetch data from an API and update your application dynamically.
 4. How to debug and understand Python scripts.
+5. How to loop through a dictionary.
 
 ---
 
@@ -17,7 +19,6 @@ This is a fun exercise to create a weather map for Singapore using Pygame and re
 
 1. **`singapore_map.png`**: The map image used as the background.
 2. **`area_coordinates.json`**: A JSON file containing coordinates for key locations in Singapore.
-3. **`weather_map.py`**: The main Python script that runs the application.
 
 ---
 
@@ -41,54 +42,85 @@ This is a fun exercise to create a weather map for Singapore using Pygame and re
      print(coordinates)
      ```
 
-3. **How to Call an API:**
-   - The script fetches weather data from [data.gov.sg](https://data.gov.sg/) using Python's `requests` library. Below is an example to help you understand how to call an API and process its response.
-   - Here’s a simple example to fetch data from an API and print the result:
-      ```python
-      import requests
+3. **How to Loop Through a Dictionary**:
+   - In Python, dictionaries are a collection of key-value pairs. You can use a `for` loop to iterate through them and access their keys and values. Below is an example:
+     ```python
+     # Example dictionary
+     area_coordinates = {
+         "Marina Bay": [103.8545, 1.2833],
+         "Orchard Road": [103.8357, 1.3040],
+         "Sentosa": [103.8185, 1.2494]
+     }
 
-      # URL of the API
-      API_URL = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast"
+     # Loop through the dictionary
+     for location, coordinates in area_coordinates.items():
+         print(f"Location: {location}, Coordinates: {coordinates}")
+     ```
 
-      def fetch_weather_data():
+   - **Explanation**:
+     1. **`area_coordinates.items()`**: This method returns key-value pairs as tuples.
+     2. **`location` and `coordinates`**: These variables unpack each key-value pair.
+     3. **Output**: The loop prints each location name and its coordinates.
+
+   - **Expected Output**:
+     ```plaintext
+     Location: Marina Bay, Coordinates: [103.8545, 1.2833]
+     Location: Orchard Road, Coordinates: [103.8357, 1.3040]
+     Location: Sentosa, Coordinates: [103.8185, 1.2494]
+     ```
+
+   - **Practical Use**:
+     You can use this technique to process the `area_coordinates.json` data and dynamically update the weather map by:
+     - Plotting each location on the map.
+     - Adding labels or markers at the specified coordinates.
+
+4. **How to Call an API**:
+   - The script fetches weather data from [data.gov.sg](https://data.gov.sg/) using Python's `requests` library. Below is an example to help you understand how to call an API and process its response:
+     ```python
+     import requests
+
+     # URL of the API
+     API_URL = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast"
+
+     def fetch_weather_data():
          try:
-            # Send an HTTP GET request to the API
-            response = requests.get(API_URL)
-            
-            # Raise an exception if the request was unsuccessful
-            response.raise_for_status()
-            
-            # Parse the JSON response
-            data = response.json()
-            print("Weather data:", data)
-            return data
+             # Send an HTTP GET request to the API
+             response = requests.get(API_URL)
+             
+             # Raise an exception if the request was unsuccessful
+             response.raise_for_status()
+             
+             # Parse the JSON response
+             data = response.json()
+             print("Weather data:", data)
+             return data
          except requests.exceptions.RequestException as e:
-            # Print an error message if something goes wrong
-            print(f"Error fetching data: {e}")
-            return None
+             # Print an error message if something goes wrong
+             print(f"Error fetching data: {e}")
+             return None
 
-      # Call the function to fetch weather data
-      fetch_weather_data()
-      ```
+     # Call the function to fetch weather data
+     fetch_weather_data()
+     ```
 
-3. **Your Tasks**:
+5. **Your Tasks**:
    - **Task 1**: Review how the `load_coordinates` function works. Add your own comments to explain what each line does.
    - **Task 2**: Test what happens when the JSON file is missing or has an error. How does the script behave?
    - **Task 3**: Explore the `fetch_weather_data` function. What happens when the API is unreachable? Add a message to handle this case.
    - **Task 4**: Add another key to `area_coordinates.json` for a new location (e.g., "Sentosa") and see it appear on the map.
 
-4. **How to Refresh Data**:
+6. **How to Refresh Data**:
    - Press **`R`** to refresh the weather data.
    - Press **`F`** to reload the coordinates from the JSON file. Use this to test changes to `area_coordinates.json`.
 
-5. **Run the Application**:
-   - Make sure you have Python and Pygame installed. To install Pygame, use:
+7. **Run the Application**:
+   - Make sure you have Python and Pygame installed. To install Pygame and requests, use:
      ```bash
-     pip install pygame
+     pip install pygame requests
      ```
    - Run the script:
      ```bash
-     python weather_map.py
+     python app.py
      ```
    - Explore the map, and press the keys (`R` and `F`) to refresh data.
 
