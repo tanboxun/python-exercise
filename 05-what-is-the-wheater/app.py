@@ -4,6 +4,8 @@ import json
 from turtle import Screen
 import requests
 
+list_icon = ['sun.png', 'rain.png', 'cloudy.png']
+
 # URL of the API
 API_URL = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast"
 
@@ -51,14 +53,20 @@ map = pygame.transform.scale(map, (WIDTH, HEIGHT))
 
 sun = pygame.image.load('images/sun.png')
 sun.convert()
-sun = pygame.transform.scale(sun, (128, 128))
-rect = sun.get_rect()
+sun = pygame.transform.scale(sun, (64, 64))
+
+rain = pygame.image.load('images/rain.png')
+rain.convert()
+rain = pygame.transform.scale(rain, (64, 64))
+
+cloudy = pygame.image.load('images/cloudy.png')
+cloudy.convert()
+cloudy = pygame.transform.scale(cloudy, (64, 64))
 
 def draw():
     print('drawing ...')
     screen.clear()
     screen.blit(map, (0, 0))
-    screen.blit(sun, rect)
     coordinates = load_coordinates("area_coordinates.json")
     for area in coordinates:
         print(area)
@@ -71,6 +79,12 @@ def draw():
             if area == data["area"]:
                 print(f'{data["area"]}: {data["forecast"]}')
                 forecasts = data["forecast"]
-                screen.draw.text( str(area) + ":" + str(forecasts), color="blue", topleft=(x, y))
+                if 'Cloudy' in forecasts:
+                    screen.blit(cloudy, (x, y))
+                elif 'sunny' in forecasts :
+                     screen.blit(sun, (x, y))
+                else: 
+                    screen.blit(rain, (x, y))
+                #screen.draw.text( str(area) + ":" + str(forecasts), color="blue", topleft=(x, y))
 
 pgzrun.go()
