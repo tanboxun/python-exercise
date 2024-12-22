@@ -1,8 +1,8 @@
 """
 A simple calculator application that performs basic arithmetic operations.
 
-The user is prompted to enter two numbers and an arithmetic operation 
-(addition, subtraction, multiplication, or division). The program then 
+The user is prompted to enter two numbers and an arithmetic operation
+(addition, subtraction, multiplication, or division). The program then
 calculates and prints the result of the operation.
 
 Functions:

@@ -2,7 +2,7 @@
 Shoot the Apple Game
 
 This module implements a simple game where the player has to shoot an apple by
-clicking on it. 
+clicking on it.
 The game keeps track of the score and the remaining time. The game ends when
 the time is up.
 
@@ -19,7 +19,8 @@ Functions:
     draw(): Draws the game screen, including the apple, score, time left,
     and game over message if applicable.
     update(dt): Updates the game state by decrementing the time left.
-    place_apple(): Places the apple at a random position within the game window.
+    place_apple(): Places the apple at a random position within the
+    game window.
     time_up(): Ends the game by setting the game_over flag to True
     and stopping the background music.
     on_mouse_down(pos): Handles the mouse down event to check
@@ -88,8 +89,8 @@ def draw():
     screen.clear()
     apple.draw()
     screen.draw.text("Score: " + str(SCORE), color="green", topleft=(10, 10))
-    screen.draw.text("TimeLeft:" , color="red", topright=(764, 10))
-    screen.draw.text(str(TIME_LEFT)[0:4] , color="red", topleft=(766, 10))
+    screen.draw.text("TimeLeft:", color="red", topright=(764, 10))
+    screen.draw.text(str(TIME_LEFT)[0:4], color="red", topleft=(766, 10))
     if GAME_OVER:
         screen.fill("black")
         screen.draw.text("Final Score: " + str(SCORE), centery=400,
@@ -147,9 +148,9 @@ def on_mouse_down(pos):
     """
     Handles the mouse down event.
 
-    This function is called when the mouse button is pressed. It checks if the 
-    click position collides with the apple. If it does, it increments the score 
-    and prints "Good shot!". Otherwise, it prints "You missed!". After checking 
+    This function is called when the mouse button is pressed. It checks if the
+    click position collides with the apple. If it does, it increments the score
+    and prints "Good shot!". Otherwise, it prints "You missed!". After checking
     the collision, it places the apple at a new position.
 
     Args:

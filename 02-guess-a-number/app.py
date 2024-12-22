@@ -3,8 +3,8 @@ This script is a number guessing game where the user has to guess a randomly
 generated number between 1 and 100.
 
 The user has up to 10 attempts to guess the correct number. After each guess,
-the script provides feedback indicating whether the guess was too low, too high,
-or correct.
+the script provides feedback indicating whether the guess was too low,
+too high, or correct.
 
 If the user guesses the correct number within 10 attempts, a congratulatory
 message is displayed. If the user fails to guess the number within 10 attempts,
@@ -39,4 +39,5 @@ while NUMBER_OF_GUESSES < 10:
         print('Congratulations! That is the number I was thinking of.')
 
     if NUMBER_OF_GUESSES >= 10:
-        print(f'Aww you ran out of guesses.The  number I was thinking of was {number_i_think}')
+        print(f'Aww you ran out of guesses.The  number I was thinking of was'
+              f'{number_i_think}')
