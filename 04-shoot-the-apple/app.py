@@ -94,7 +94,7 @@ def draw():
     if GAME_OVER:
         screen.fill("black")
         screen.draw.text("Final Score: " + str(SCORE), centery=400,
-                         centerx=409 , fontsize=60,
+                         centerx=409, fontsize=60,
                          color="turquoise", gcolor="red")
 
 
